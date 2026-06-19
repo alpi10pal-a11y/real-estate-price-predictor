@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Predictor</title>
+    <style>
+        body { background-color: #121212; color: #fff; font-family: 'Poppins', sans-serif; }
+        h1 { color: #ff4444; text-align: center; padding: 20px; }
+        .form-container { max-width: 900px; margin: auto; background: #1e1e1e; padding: 25px; border-radius: 12px;
+                          box-shadow: 0 0 20px rgba(255,0,0,0.3); display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        input, select { padding: 10px; margin: 5px; width: 90%; border: none; border-bottom: 2px solid #444;
+                        background: #1e1e1e; color: #ff4444; font-weight: bold; }
+        input:focus, select:focus { border-bottom: 2px solid #ff4444; outline: none; }
+        select option { background: #1e1e1e; color: #ffffff; font-weight: 500; }
+        button { grid-column: span 2; background: linear-gradient(90deg, #ff0000, #990000); color: white; padding: 12px;
+                 border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+        button:hover { box-shadow: 0 0 15px red; transform: scale(1.05); }
+        .result { max-width: 900px; margin: 20px auto; background: #222; padding: 20px; border-radius: 10px;
+                  color: #ff4444; font-weight: bold; text-align: center; font-size: 22px; }
+    </style>
+</head>
+<body>
+    <h1>Enter House Details</h1>
+    <form action="/predict" method="post">
+        <div class="form-container">
+            <input type="number" name="bedrooms" min="1" max="10" placeholder="Bedrooms" required>
+            <input type="number" name="bathrooms" min="1" max="10" placeholder="Bathrooms" required>
+            <input type="number" name="sqft_living" min="300" max="10000" placeholder="Living Area (sqft)" required>
+            <input type="number" name="sqft_lot" min="500" max="50000" placeholder="Lot Size (sqft)" required>
+            <input type="number" name="floors" min="1" max="3" placeholder="Floors" required>
+            <select name="waterfront" required>
+                <option value="0">Not Waterfront</option>
+                <option value="1">Waterfront</option>
+            </select>
+            <select name="view" required>
+                <option value="0">No View</option>
+                <option value="1">View</option>
+            </select>
+            <select name="condition" required>
+                <option value="1">Basic</option>
+                <option value="2">Fair</option>
+                <option value="3">Good</option>
+                <option value="4">Very Good</option>
+                <option value="5">Excellent</option>
+            </select>
+            <input type="number" name="sqft_above" min="300" max="10000" placeholder="Sqft Above" required>
+            <input type="number" name="sqft_basement" min="0" max="5000" placeholder="Sqft Basement" required>
+            <input type="number" name="yr_built" min="1800" max="2026" placeholder="Year Built" required>
+            <input type="number" name="yr_renovated" min="0" max="2026" placeholder="Year Renovated" required>
+            <input type="text" name="city" placeholder="City (text only)" required>
+            <input type="text" name="statezip" placeholder="State/Zip (alphanumeric)" required>
+            <button type="submit">Predict Price</button>
+        </div>
+    </form>
+
+    {% if prediction %}
+    <div class="result">Predicted Price: ${{ prediction }}</div>
+    {% elif error %}
+    <div class="result">{{ error }}</div>
+    {% endif %}
+</body>
+</html>
