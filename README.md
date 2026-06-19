@@ -29,7 +29,7 @@ Code
 ## ⚙️ Installation
 1. Clone the repo:
    ```bash
-   git clone https://github.com/alpi-pal/real-estate-price-predictor.git
+   git clone https://github.com/alpi10pal-a11y/real-estate-price-predictor.git
    cd real-estate-price-predictor
 Install dependencies:
 
@@ -39,10 +39,14 @@ Run locally:
 
 bash
 python app.py
-Open http://127.0.0.1:5000 in browser.
+Open in browser:
 
+Code
+http://127.0.0.1:5000
 🌐 Deployment
-Hosted on Render free plan.
+Hosted on Render free plan
+
+Live Demo: https://real-estate-price-predictor.onrender.com (real-estate-price-predictor.onrender.com in Bing)
 
 Start command:
 
@@ -56,7 +60,7 @@ Features include bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterfront,
 👨‍💻 Author
 Alpi Pal
 
- Aspiring Data Scientist
+Aspiring Data Scientist | Full‑Stack Developer
 
 📧 alpi10.pal@gmail.com
 
